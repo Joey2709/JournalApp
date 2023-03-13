@@ -19,14 +19,16 @@ import { RootState } from "../../store/store";
 import AuthLayout from "../layout/AuthLayout";
 import { useForm } from "./../../hooks/useForm";
 
+const formData = {
+  email: "joseph@google.com",
+  password: "12345678",
+};
+
 const LoginPage = () => {
   const { status, errorMessage } = useSelector(
     (state: RootState) => state.auth
   );
-  const { email, password, onInputChange } = useForm({
-    email: "joseph@google.com",
-    password: "12345678",
-  });
+  const { email, password, onInputChange } = useForm(formData);
 
   const isAuthenticating = useMemo(() => status === "checking", [status]);
 
@@ -50,7 +52,10 @@ const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
