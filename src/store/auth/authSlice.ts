@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface AuthState {
   status: string;
@@ -12,7 +11,6 @@ export interface AuthState {
 
 const initialState: AuthState = {
   status: "not-authenticated",
-  //status: "checking",
   uid: null,
   email: null,
   displayName: null,
